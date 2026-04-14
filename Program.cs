@@ -1,8 +1,17 @@
+using XianlitiCN.PraesentiaBackend.Domain.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.LicenseKey = builder.Configuration["MediatR:LicenseKey"];
+    cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+});
+builder.Services.AddScoped<DeviceRegistrationService>();
 
 var app = builder.Build();
 

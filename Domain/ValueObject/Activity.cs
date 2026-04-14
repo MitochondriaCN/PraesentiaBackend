@@ -1,6 +1,8 @@
-﻿namespace XianlitiCN.PraesentiaBackend.Domain.ValueObject;
+﻿using System.Collections.Immutable;
+
+namespace XianlitiCN.PraesentiaBackend.Domain.ValueObject;
 
 public record Activity(
     Application CurrentApplication,
-    Dictionary<string, object> Metadata,
+    ImmutableDictionary<string, object> Metadata,
     DateTimeOffset BeginAt);
